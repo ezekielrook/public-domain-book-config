@@ -1,0 +1,92 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Continue Rewriting Public Domain Book API",
+    "version": "1.0.0",
+    "description": "Handles the continuation of the rewriting process of a chosen public domain book from the last saved point."
+  },
+  "servers": [
+    {
+      "url": "https://your-api-url.com"
+    }
+  ],
+  "paths": {
+    "/continue-rewrite": {
+      "post": {
+        "operationId": "continueRewriting",
+        "summary": "Continue Rewriting Book",
+        "description": "Continues the rewriting process from the last saved point.",
+        "requestBody": {
+          "description": "The data to continue rewriting the book",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "bookTitle": {
+                    "type": "string",
+                    "description": "The title of the book to rewrite"
+                  },
+                  "chapter": {
+                    "type": "integer",
+                    "description": "The chapter to continue rewriting from",
+                    "default": 1
+                  },
+                  "lastSavedPoint": {
+                    "type": "string",
+                    "description": "The last saved point in the book"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Rewriting process continued",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Rewriting continued"
+                    },
+                    "nextStep": {
+                      "type": "string",
+                      "example": "Provide the rewritten text of the next chapter"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RewritingContinue": {
+        "type": "object",
+        "properties": {
+          "bookTitle": {
+            "type": "string",
+            "description": "The title of the book to rewrite"
+          },
+          "chapter": {
+            "type": "integer",
+            "description": "The chapter to continue rewriting from",
+            "default": 1
+          },
+          "lastSavedPoint": {
+            "type": "string",
+            "description": "The last saved point in the book"
+          }
+        }
+      }
+    }
+  }
+}
