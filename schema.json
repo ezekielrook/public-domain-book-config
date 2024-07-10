@@ -1,28 +1,69 @@
 {
-  "name": "Search for Public Domain Book",
-  "description": "Searches online sources for the specified public domain book.",
-  "steps": [
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Public Domain Book Search API",
+    "version": "1.0.0",
+    "description": "Searches online sources for the specified public domain book."
+  },
+  "servers": [
     {
-      "type": "prompt",
-      "content": "Please provide the title of the public domain book you want to search for."
-    },
-    {
-      "type": "api_call",
-      "api": {
-        "name": "Project Gutenberg API",
-        "endpoint": "https://gutenberg.org/api/books",
-        "method": "GET",
-        "params": {
-          "title": "{{user_input}}"
-        }
-      }
-    },
-    {
-      "type": "display",
-      "content": "Book found: {{api_response.title}}. You can download it [here]({{api_response.link}})."
+      "url": "https://gutenberg.org/api"
     }
   ],
-  "authentication": {
-    "type": "none"
+  "paths": {
+    "/books": {
+      "get": {
+        "summary": "Search for Public Domain Book",
+        "description": "Searches Project Gutenberg for the specified public domain book.",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The title of the public domain book to search for."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of books matching the search criteria",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "link": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Book": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    }
   }
 }
