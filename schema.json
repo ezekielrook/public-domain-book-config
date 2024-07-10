@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.0",
+  "openapi": "3.1.0",
   "info": {
     "title": "Public Domain Book Search API",
     "version": "1.0.0",
@@ -13,6 +13,7 @@
   "paths": {
     "/books": {
       "get": {
+        "operationId": "searchBooks",
         "summary": "Search for Public Domain Book",
         "description": "Searches Project Gutenberg for the specified public domain book.",
         "parameters": [
