@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Rewriting Public Domain Book API",
+    "title": "Start Rewriting Public Domain Book API",
     "version": "1.0.0",
-    "description": "Handles the rewriting process of a chosen public domain book."
+    "description": "Begins the process of rewriting a chosen public domain book."
   },
   "servers": [
     {
-      "url": "https://your-api-url.com"
+      "url": "https://start-rewriting-api.com"
     }
   ],
   "paths": {
@@ -58,24 +58,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "RewritingStart": {
-        "type": "object",
-        "properties": {
-          "bookTitle": {
-            "type": "string",
-            "description": "The title of the book to rewrite"
-          },
-          "chapter": {
-            "type": "integer",
-            "description": "The chapter to start rewriting from",
-            "default": 1
           }
         }
       }
