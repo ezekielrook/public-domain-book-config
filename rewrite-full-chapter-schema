@@ -1,0 +1,84 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Rewrite Public Domain Book Chapter API",
+    "version": "1.0.0",
+    "description": "Rewrites a complete chapter from a specified public domain book."
+  },
+  "servers": [
+    {
+      "url": "https://rewrite-chapter.api"
+    }
+  ],
+  "paths": {
+    "/rewrite-chapter": {
+      "post": {
+        "operationId": "rewriteFullChapter",
+        "summary": "Rewrite Full Chapter",
+        "description": "Handles the complete rewriting process of a chapter from a public domain book.",
+        "requestBody": {
+          "description": "The data to rewrite the chapter",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "bookTitle": {
+                    "type": "string",
+                    "description": "The title of the book to rewrite"
+                  },
+                  "chapterNumber": {
+                    "type": "integer",
+                    "description": "The chapter number to rewrite",
+                    "default": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Chapter rewritten successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Chapter rewritten successfully"
+                    },
+                    "rewrittenChapter": {
+                      "type": "string",
+                      "description": "The rewritten chapter text"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RewriteFullChapter": {
+        "type": "object",
+        "properties": {
+          "bookTitle": {
+            "type": "string",
+            "description": "The title of the book to rewrite"
+          },
+          "chapterNumber": {
+            "type": "integer",
+            "description": "The chapter number to rewrite",
+            "default": 1
+          }
+        }
+      }
+    }
+  }
+}
