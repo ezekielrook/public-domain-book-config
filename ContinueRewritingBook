@@ -3,11 +3,11 @@
   "info": {
     "title": "Continue Rewriting Public Domain Book API",
     "version": "1.0.0",
-    "description": "Handles the continuation of the rewriting process of a chosen public domain book from the last saved point."
+    "description": "Continues the rewriting process of a chosen public domain book from the last saved point."
   },
   "servers": [
     {
-      "url": "https://your-api-url.com"
+      "url": "https://continue-rewriting-api.com"
     }
   ],
   "paths": {
@@ -62,28 +62,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "RewritingContinue": {
-        "type": "object",
-        "properties": {
-          "bookTitle": {
-            "type": "string",
-            "description": "The title of the book to rewrite"
-          },
-          "chapter": {
-            "type": "integer",
-            "description": "The chapter to continue rewriting from",
-            "default": 1
-          },
-          "lastSavedPoint": {
-            "type": "string",
-            "description": "The last saved point in the book"
           }
         }
       }
