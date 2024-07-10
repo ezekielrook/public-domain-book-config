@@ -1,0 +1,28 @@
+{
+  "name": "Search for Public Domain Book",
+  "description": "Searches online sources for the specified public domain book.",
+  "steps": [
+    {
+      "type": "prompt",
+      "content": "Please provide the title of the public domain book you want to search for."
+    },
+    {
+      "type": "api_call",
+      "api": {
+        "name": "Project Gutenberg API",
+        "endpoint": "https://gutenberg.org/api/books",
+        "method": "GET",
+        "params": {
+          "title": "{{user_input}}"
+        }
+      }
+    },
+    {
+      "type": "display",
+      "content": "Book found: {{api_response.title}}. You can download it [here]({{api_response.link}})."
+    }
+  ],
+  "authentication": {
+    "type": "none"
+  }
+}
