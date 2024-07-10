@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://gutenberg.org/api"
+      "url": "https://search-public-domain-books.api"
     }
   ],
   "paths": {
