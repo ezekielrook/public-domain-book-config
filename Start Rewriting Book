@@ -1,0 +1,84 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Rewriting Public Domain Book API",
+    "version": "1.0.0",
+    "description": "Handles the rewriting process of a chosen public domain book."
+  },
+  "servers": [
+    {
+      "url": "https://your-api-url.com"
+    }
+  ],
+  "paths": {
+    "/rewrite": {
+      "post": {
+        "operationId": "startRewriting",
+        "summary": "Start Rewriting Book",
+        "description": "Begins the process of rewriting a chosen public domain book.",
+        "requestBody": {
+          "description": "The initial data to start rewriting the book",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "bookTitle": {
+                    "type": "string",
+                    "description": "The title of the book to rewrite"
+                  },
+                  "chapter": {
+                    "type": "integer",
+                    "description": "The chapter to start rewriting from",
+                    "default": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Rewriting process started",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Rewriting started"
+                    },
+                    "nextStep": {
+                      "type": "string",
+                      "example": "Provide the rewritten text of Chapter 1"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RewritingStart": {
+        "type": "object",
+        "properties": {
+          "bookTitle": {
+            "type": "string",
+            "description": "The title of the book to rewrite"
+          },
+          "chapter": {
+            "type": "integer",
+            "description": "The chapter to start rewriting from",
+            "default": 1
+          }
+        }
+      }
+    }
+  }
+}
